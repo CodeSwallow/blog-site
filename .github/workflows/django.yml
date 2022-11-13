@@ -28,3 +28,5 @@ jobs:
         DEBUG: 1
       run: |
         python manage.py test
+    - name: Lint
+      run: flake8
