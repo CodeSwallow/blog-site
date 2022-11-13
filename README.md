@@ -1,2 +1,2 @@
-# blog-site
+# Blog Site
 General Blog Site
