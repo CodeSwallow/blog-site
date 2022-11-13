@@ -24,8 +24,7 @@ class PostModelTest(TestCase):
             overview='Create a django blog',
             content='Content of django blog tutorial',
             table_of_contents='table...',
-            author_id=create_user(),
-            category=Category.objects.create(title='django', slug='django')
+            author=create_user()
         )
 
     def test_object_name_is_title(self):
@@ -53,7 +52,7 @@ class CategoryModelTest(TestCase):
 
     def test_get_absolute_url(self):
         category = Category.objects.get(id=1)
-        self.assertEqual(category.get_absolute_url(), '/post/django')
+        self.assertEqual(category.get_absolute_url(), '/category/django')
 
 
 class SeriesModelTest(TestCase):
@@ -62,7 +61,8 @@ class SeriesModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
         Series.objects.create(
-            title='Django Blog Series'
+            title='Django Blog Series',
+            slug='django-blog-series'
         )
 
     def test_object_name_is_title(self):
@@ -71,4 +71,4 @@ class SeriesModelTest(TestCase):
 
     def test_get_absolute_url(self):
         series = Series.objects.get(id=1)
-        self.assertEqual(series.get_absolute_url(), '/post/django-blog-series')
+        self.assertEqual(series.get_absolute_url(), '/series/django-blog-series')
