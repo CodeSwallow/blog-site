@@ -32,8 +32,15 @@ class CategoryListView(generic.ListView):
     paginate_by = 10
 
 
-class CategoryDetailView(generic.DetailView):
-    model = Category
+class CategoryView(generic.ListView):
+    model = Post
+    template_name = "blogs/search_results.html"
+    paginate_by = 10
+
+    def get_queryset(self):
+        query = self.request.path.replace("/category/", "")
+        post_list = Post.objects.filter(categories__slug=query).distinct()
+        return post_list
 
 
 class SearchResultsView(generic.ListView):
