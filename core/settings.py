@@ -74,6 +74,8 @@ TEMPLATES = [
     },
 ]
 
+TEMPLATES[0]['OPTIONS']['context_processors'].append("blogs.context_processors.categories_processor")
+
 WSGI_APPLICATION = 'core.wsgi.application'
 
 
