@@ -1,4 +1,5 @@
 from django.views import generic
+from django.db.models import Q
 
 from blogs.models import (
     Post,
@@ -33,3 +34,16 @@ class CategoryListView(generic.ListView):
 
 class CategoryDetailView(generic.DetailView):
     model = Category
+
+
+class SearchResultsView(generic.ListView):
+    model = Post
+    template_name = "blogs/search_results.html"
+    paginate_by = 10
+
+    def get_queryset(self):
+        query = self.request.GET.get("search")
+        post_list = Post.objects.filter(
+            Q(title__contains=query) | Q(categories__title__contains=query)
+        ).distinct()
+        return post_list
