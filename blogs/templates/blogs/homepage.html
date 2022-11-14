@@ -1,10 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block content %}
+    <h1>CodeSwallow Posts</h1>
+    <p>Welcome to CodeSwallow, a website for viewing different article posts about Python and Django</p>
+    <p>The following posts are available:</p>
+    <ul>
+        <li><strong>Books:</strong> {{ num_books }}</li>
+        <li><strong>Copies:</strong> {{ num_instances }}</li>
+        <li><strong>Copies available:</strong> {{ num_instances_available }}</li>
+        <li><strong>Authors:</strong> {{ num_authors }}</li>
+        {% for post in post_list %}
+            <article class="blog-post">
+                <h2 class="blog-post-title mb-1">
+                    <a href="{% url 'blogs:detail' post.slug %}" style="text-decoration: none"
+                       class="text-black">
+                        {{ post.title }}
+                    </a>
+                </h2>
+                <p class="blog-post-meta">{{ post.pub_date.date }}</p>
+
+                <hr>
+                <p>{{ post.overview }}</p>
+            </article>
+        {% endfor %}
+    </ul>
+{% endblock %}
