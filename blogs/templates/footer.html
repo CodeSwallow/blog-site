@@ -1,0 +1,39 @@
+{% load static %}
+<div class="container">
+    <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
+        <div class="col mb-3">
+            <a href="/" class="d-flex align-items-start justify-content-start mb-3 link-dark text-decoration-none">
+                <img src="{% static 'images/favicon.ico' %}" alt="Logo" width="50%" height="50%">
+            </a>
+            <p class="text-muted">&copy; 2022</p>
+        </div>
+
+        <div class="col mb-3">
+
+        </div>
+
+        <div class="col mb-3">
+
+        </div>
+
+        <div class="col mb-3">
+            <h5>Languages</h5>
+            <ul class="nav flex-column">
+                {% for language in languages %}
+                    <li class="nav-item mb-2"><a href="{% url 'blogs:category' language.slug %}"
+                                                 class="nav-link p-0 text-muted">{{ language.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="col mb-3">
+            <h5>Topics</h5>
+            <ul class="nav flex-column">
+                {% for subject in others %}
+                    <li class="nav-item mb-2"><a href="{% url 'blogs:category' subject.slug %}"
+                                                 class="nav-link p-0 text-muted">{{ subject.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </footer>
+</div>
