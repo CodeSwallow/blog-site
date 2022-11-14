@@ -12,7 +12,7 @@ class Series(models.Model):
 
     def get_absolute_url(self):
         """Returns the URL to access a particular series instance."""
-        return reverse("series-detail", kwargs={"slug": self.slug})
+        return reverse("blogs:series-detail", kwargs={"slug": self.slug})
 
     def __str__(self):
         return self.title
@@ -35,7 +35,7 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         """Returns the URL to access a particular post instance."""
-        return reverse("post-detail", kwargs={"slug": self.slug})
+        return reverse("blogs:post", kwargs={"slug": self.slug})
 
     def __str__(self):
         return self.title
@@ -51,7 +51,7 @@ class Category(models.Model):
 
     def get_absolute_url(self):
         """Returns the URL to access a particular category instance."""
-        return reverse("category-detail", kwargs={"slug": self.slug})
+        return reverse("blogs:category", kwargs={"slug": self.slug})
 
     def __str__(self):
         return self.title
