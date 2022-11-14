@@ -17,21 +17,20 @@
         </div>
 
         <div class="col mb-3">
-            <h5>Languages</h5>
+            <h5>GitHub and Youtube</h5>
             <ul class="nav flex-column">
-                {% for language in languages %}
-                    <li class="nav-item mb-2"><a href="{% url 'blogs:category' language.slug %}"
-                                                 class="nav-link p-0 text-muted">{{ language.title }}</a></li>
-                {% endfor %}
+                <li><a href="https://github.com/CodeSwallow" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                <li><a href="https://www.youtube.com/channel/UC8rldZMylIg77fGBk_tAqPw" target="_blank"
+                       rel="noopener noreferrer">YouTube</a></li>
             </ul>
         </div>
 
         <div class="col mb-3">
-            <h5>Topics</h5>
+            <h5>Categories</h5>
             <ul class="nav flex-column">
-                {% for subject in others %}
-                    <li class="nav-item mb-2"><a href="{% url 'blogs:category' subject.slug %}"
-                                                 class="nav-link p-0 text-muted">{{ subject.title }}</a></li>
+                {% for category in categories %}
+                    <li class="nav-item mb-2"><a href="{% url 'blogs:category' category.slug %}"
+                                                 class="nav-link p-0 text-muted">{{ category.title }}</a></li>
                 {% endfor %}
             </ul>
         </div>
