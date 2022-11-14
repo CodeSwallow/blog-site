@@ -14,8 +14,19 @@
 {% include "navbar.html" %}
 <div class="container-xxl bd-gutter mt-3 my-md-4 bd-layout">
     <main class="container">
+        {% block featured %}{% endblock %}
         <div class="row g-5">
-            {% block content %} {% endblock %}
+            <div class="col-md-1"></div>
+
+            <div class="col-md-7">
+                {% block content %} {% endblock %}
+            </div>
+
+            <div class="col-md-3">
+                {% block sidebar %} {% endblock %}
+            </div>
+
+            <div class="col-md-1"></div>
         </div>
     </main>
 </div>
