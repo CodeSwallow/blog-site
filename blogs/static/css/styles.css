@@ -1,0 +1,18 @@
+.hide-scrollbar {
+    overflow-y: scroll;
+    height: 75vh;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.hide-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+.scrollbar-color a {
+    color: black;
+    text-decoration: none;
+}
