@@ -24,6 +24,7 @@ class Post(models.Model):
     slug = models.SlugField(_("slug"), unique=True)
     overview = models.TextField(_("overview"))
     timestamp = models.DateTimeField(_("timestamp"), auto_now_add=True)
+    # TODO: look into serving media through markdown content
     content = models.TextField(_("content"))
     table_of_contents = models.TextField(_("table of contents"))
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
@@ -63,10 +64,10 @@ class Comment(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
     post_date = models.DateTimeField(auto_now_add=True)
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
-    reply_to = models.ForeignKey('Comment', on_delete=models.CASCADE, related_name='replies', null=True)
+    reply_to = models.ForeignKey('Comment', on_delete=models.CASCADE, related_name='replies', null=True, blank=True)
 
     class Meta:
-        ordering = ["post_date"]
+        ordering = ["-post_date"]
 
     def __str__(self):
         len_title = 75
