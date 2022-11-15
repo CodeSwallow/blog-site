@@ -4,10 +4,6 @@ General Blog Site
 
 ## Example Post Content for Post Model:
 
-# Appium Tests with Robot Framework
-
-Uses the library robotframework and robotframework_appiumlibrary <br>
-
 ## Table of Contents
 
 [TOC]
@@ -76,7 +72,6 @@ class HomePageView(generic.ListView):
     template_name = 'blogs/homepage.html'
     paginate_by = 10
 ```
-
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
 aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
@@ -154,6 +149,7 @@ class HomePageView(generic.ListView):
     template_name = 'blogs/homepage.html'
     paginate_by = 10
 ```
+
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
 aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
 aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
