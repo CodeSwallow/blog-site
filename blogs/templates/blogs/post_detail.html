@@ -5,19 +5,27 @@
 {% block content %}
     <h1>{{ post.title }}</h1>
     <p>{{ post.content | markdown | safe }}</p>
-    <hr class="d-none d-md-block my-2 mt-5 mb-2">
 
-    <h3>Comments</h3>
+    <h3 id="comments-section" class=" mt-5">Comments</h3>
+    <hr class="d-none d-md-block my-2 mb-3 mt-2">
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3 django-comment-form">
+            {{ form.as_div }}
+        </div>
+        <input type="submit" value="Submit" class="btn btn-primary"/>
+    </form>
+
     {% for comment in post.comments.all %}
         {% if not comment.reply_to %}
-            <div class="mt-4 mb-2">
+            <div class="mt-4 mb-2 border-end border-bottom border-opacity-10 rounded p-1">
                 <div class="row">
                     <div class="col-8 d-flex">
                         <h5>{{ comment.author }}</h5>
                         <span>- {{ comment.post_date }}</span>
                     </div>
                     <div class="col-4 text-end">
-                            <a href="#">reply</a>
+                        {#                        <a href="#">reply</a>#}
                     </div>
                 </div>
                 {{ comment.description }}
@@ -25,13 +33,13 @@
             {% if comment.replies %}
                 {% for reply in comment.replies.all %}
                     <div class="ms-5 mb-3">
-                            <div class="row">
-                                <div class="d-flex">
-                                    <h6>{{ reply.author }}</h6>
-                                    <span>- {{ reply.post_date }}</span>
-                                </div>
+                        <div class="row">
+                            <div class="d-flex">
+                                <h6>{{ reply.author }}</h6>
+                                <span>- {{ reply.post_date }}</span>
                             </div>
-                            {{ reply.description }}
+                        </div>
+                        {{ reply.description }}
                     </div>
                 {% endfor %}
             {% endif %}
