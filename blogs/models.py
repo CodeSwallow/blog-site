@@ -55,3 +55,22 @@ class Category(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Comment(models.Model):
+    """Blog Comment"""
+    description = models.TextField(max_length=1000, help_text="Enter comment about blog here.")
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
+    post_date = models.DateTimeField(auto_now_add=True)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
+    reply_to = models.ForeignKey('Comment', on_delete=models.CASCADE, related_name='replies', null=True)
+
+    class Meta:
+        ordering = ["post_date"]
+
+    def __str__(self):
+        len_title = 75
+        if len(self.description) > len_title:
+            return self.description[:len_title] + '...'
+        else:
+            return self.description
