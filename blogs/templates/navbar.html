@@ -26,7 +26,7 @@
                     </ul>
                 </li>
             </ul>
-            <ul class="navbar-nav ms-md-auto flex-row flex-wrap">
+            <ul class="navbar-nav ms-md-auto flex-row flex-wrap me-2">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
@@ -58,6 +58,11 @@
                 <input name="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
+            {% if user.is_authenticated %}
+                <a class="btn btn-outline-primary ms-2" href="{% url 'logout' %}" role="button">Sign Out</a>
+            {% else %}
+                <a class="btn btn-outline-primary ms-2" href="{% url 'login' %}" role="button">Sign In</a>
+            {% endif %}
         </div>
     </div>
 </nav>
